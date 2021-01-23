@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-export default function Details({ navigation }) {
-    const movie = navigation.getParam('name');
-
+export default function Details({ navigation,route}) {
+    const movie = route.params.list;
     const {
         Title,
         Year,

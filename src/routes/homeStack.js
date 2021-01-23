@@ -1,9 +1,12 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import Home from '../screens/home';
-import Details from '../screens/movies';
 import List from '../screens/list';
-import Favorites from './../components/favorites';
+import Favorites from '../screens/favorites';
+import ListMovies from './../screens/list';
+import Details from './../screens/movies';
+import { enableScreens } from 'react-native-screens';
+enableScreens();
 
 const screens = {
     Home: {
@@ -19,8 +22,20 @@ const screens = {
         }
     },
     Details: {
-        screen: Details
+        screen: Details,
+        navigationOptions: {
+            title: 'Detalles'
+        }
     },
+    Favorites: {
+        screen: Favorites,
+        navigationOptions: {
+            title: 'Favoritos'
+        }
+    }
+};
+
+const screensFav = {
     Favorites: {
         screen: Favorites,
         navigationOptions: {
@@ -31,5 +46,6 @@ const screens = {
 
 
 const HomeStack = createStackNavigator(screens);
+const FavoriteStack = createStackNavigator(screensFav);
 
-export default createAppContainer(HomeStack);
+export default createAppContainer(HomeStack,FavoriteStack);

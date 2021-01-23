@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CardMovie from './common/cardMovie';
-import DeleteFavoriteComponent from './deleteFavorite';
+import CardMovie from '../components/common/cardMovie';
+import DeleteFavoriteComponent from '../components/deleteFavorite';
 
 export default function Favorites({ navigation }) {
 
     const [arrayF, setArrayF] = useState({});
     const m2 = [];
-
-    // const get = () => {
+    
     AsyncStorage.getAllKeys((err, keys) => {
         AsyncStorage.multiGet(keys, (err, stores) => {
             stores.map((result, i, store) => {
@@ -18,15 +17,12 @@ export default function Favorites({ navigation }) {
             setArrayF(m2);
         });
     });
-    //}
-    //useEffect(() => AsyncStorage.getAllKeys(), []);
 
     let isLoading = true;
     arrayF ? isLoading = false : isLoading = true;
 
     return (
         <View  >
-            {/* <Button onPress={()=>get()} title='Mostrar'></Button> */}
             <Text style={styles.titleText}> Lista de Favoritos</Text>
             {isLoading ?
                 <ActivityIndicator size="large" color="black" />
@@ -39,7 +35,7 @@ export default function Favorites({ navigation }) {
                             <View>
                                 <DeleteFavoriteComponent {...item} />
                                 <TouchableOpacity
-                                    onPress={() => navigation.navigate('Details', { name: item })}
+                                    onPress={() => navigation.navigate('Details', { list: item })}
                                     style={styles.container} >
                                     <CardMovie {...item} isLoading={isLoading} />
                                 </TouchableOpacity>
@@ -48,22 +44,14 @@ export default function Favorites({ navigation }) {
                     :
                     <View>
                         <Text style={styles.content}> No Hay Favoritos</Text>
-                        <Image 
-                        style={styles.image}
-                        source={require('C:/ReactNative/app-movies/assets/not-found.png')}/>
+                        <Image
+                            style={styles.image}
+                            source={require('C:/ReactNative/app-movies/assets/not-found.png')} />
                     </View>
-
-
             }
-            {/*   <TouchableOpacity onPress={() => navigation.navigate('Details', { name: list })} >
-                <CardMovie {...list} isLoading={isLoading} />
-            </TouchableOpacity> */}
-
         </View>
     )
 };
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -74,7 +62,6 @@ const styles = StyleSheet.create({
     content: {
         textAlign: 'center',
         padding: 40,
-
     },
     list: {
         flex: 1,
@@ -91,74 +78,4 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         alignSelf: 'center',
     },
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-const GetFavoritesComponents = () => {
-
-
-    const [arrayF, setArrayF] = useState({});
-    const movie = {};
-    const m2 = []
-
-
-    const getList = () => {
-        AsyncStorage.getAllKeys((err, keys) => {
-            err ? alert('Error, ' + err) :
-                AsyncStorage.multiGet(keys, (err, stores) => {
-                    stores.map((result, i, store) => {
-                        movie[i] = JSON.parse(store[i][1]);
-                        m2.push(JSON.parse(store[i][1]));
-                        console.log(movie[i].Title);
-                        console.log(m2[i].Year);
-                    });
-                    setArrayF(m2);
-                });
-        });
-        console.log("get " + arrayF.length);
-    }
-
-    let isLoading = true;
-    arrayF ? isLoading = false : isLoading = true;
-
-    return (
-        <View>
-            <Button title="Ver Favoritos" onPress={() => getList()}> </Button>
-            {arrayF.length > 0 ?
-                <Text>-esperando datos...</Text>
-
-
-                :
-                <Text>No hay Favoritos </Text>
-            }
-        </View>
-    )
-}
-
-export default GetFavoritesComponents; */

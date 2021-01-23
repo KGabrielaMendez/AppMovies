@@ -17,7 +17,7 @@ const DeleteFavoriteComponent = ( id ) => {
     return (
         <View>
             <TouchableOpacity style={styles.container} onPress={() => saveFavorites(id)}>
-                <Icon name="close" color='red' size={50} />
+                <Icon name="close" color='red' size={35} />
             </TouchableOpacity>
 
         </View>
@@ -32,7 +32,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf:'flex-end',
         borderColor: '#6B6D69',
-        borderRadius:10,
+        borderRadius:5,
+        shadowColor:'#000',
+        shadowOffset: {
+            width:0,
+            height:2,
+        },
         borderWidth:1
     },
 });

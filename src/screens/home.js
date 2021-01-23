@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Image, View, Text, TouchableWithoutFeedback, Button,Keyboard, StyleSheet } from 'react-native'
 import InputTextSearch from '../components/common/inputText';
 
-export default function Home({ navigation }) {
+export default function Home({ navigation}) {
     const [movieTitle, setMovieTitle] = useState('');
 
     const pressHandler = () => {
-        navigation.navigate('List', { movieName: movieTitle });
+        navigate('List', { movieName: movieTitle });
     }
 
     return (
@@ -14,7 +14,6 @@ export default function Home({ navigation }) {
             Keyboard.dismiss();
             console.log("keyboard-pñlk-plo") }} >
             <View>
-            <Button title="Ver Favoritos" onPress={() => navigation.navigate('Favorites')} />
                 <Image style={styles.image } source={{ uri: 'https://laraleonardo.files.wordpress.com/2015/02/perro-cine.jpg' }} />
                 <Text style ={styles.title}>Buscar Película</Text>
                 <InputTextSearch
@@ -23,7 +22,7 @@ export default function Home({ navigation }) {
                     onChangeText={(movieTitle) => setMovieTitle(movieTitle)}
                 />
                 <Text>{movieTitle}</Text>
-                <Button title='Buscar' onPress={() => navigation.navigate('List', { movieName: movieTitle })} />
+                <Button title='Buscar' onPress={() => navigation.navigate('List', { name:movieTitle })} />
             </View>
         </TouchableWithoutFeedback>
     )

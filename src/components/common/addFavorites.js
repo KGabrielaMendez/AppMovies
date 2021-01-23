@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, View, StyleSheet, SafeAreaView, FlatList } from
 import { StarOutlined, StarFilled, StarTwoTone } from '@ant-design/icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Favorites from './../favorites';
+import Favorites from '../../screens/favorites';
 
 const AddFavoriteComponent = ( id ) => {
     const [add, setAdd] = useState(false);
