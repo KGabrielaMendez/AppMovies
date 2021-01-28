@@ -22,7 +22,7 @@ export default function Favorites({ navigation }) {
     arrayF ? isLoading = false : isLoading = true;
 
     return (
-        <View  >
+        <  >
             <Text style={styles.titleText}> Lista de Favoritos</Text>
             {isLoading ?
                 <ActivityIndicator size="large" color="black" />
@@ -32,24 +32,24 @@ export default function Favorites({ navigation }) {
                         data={arrayF}
                         keyExtractor={item => item.imdbID}
                         renderItem={({ item }) =>
-                            <View>
+                            <>
                                 <DeleteFavoriteComponent {...item} />
                                 <TouchableOpacity
                                     onPress={() => navigation.navigate('Details', { list: item })}
                                     style={styles.container} >
                                     <CardMovie {...item} isLoading={isLoading} />
                                 </TouchableOpacity>
-                            </View>
+                            </>
                         } />
                     :
-                    <View>
+                    <>
                         <Text style={styles.content}> No Hay Favoritos</Text>
                         <Image
                             style={styles.image}
                             source={require('C:/ReactNative/app-movies/assets/not-found.png')} />
-                    </View>
+                    </>
             }
-        </View>
+        </>
     )
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { createStackNavigator } from "@react-navigation/stack";
+
 import Home from '../screens/home';
 import List from '../screens/list';
 import Favorites from './../screens/favorites';
@@ -9,9 +11,9 @@ const Stack = createStackNavigator();
 
 const screenOptionStyle = {
   headerStyle: {
-    backgroundColor: "#4A88FF",
+    backgroundColor: "#5FF9C77",
   },
-  headerTintColor: "white",
+  headerTintColor: "black",
   headerBackTitle: "Back",
 };
 
@@ -19,16 +21,16 @@ const MainStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
         <Stack.Screen 
-          name="Página Principal" 
+          name="Home" 
           component={Home} />
         <Stack.Screen 
-          name="Resultados de la Búsqueda" 
+          name="List" 
           component={List} />
         <Stack.Screen  
-          name="Detalles de la Película" 
+          name="Details" 
           component={Details} />
         <Stack.Screen 
-          name="Favoritos" 
+          name="Favorites" 
           component={Favorites} />
     </Stack.Navigator>
   );
@@ -37,7 +39,7 @@ const MainStackNavigator = () => {
 const FavoriteStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="Favoritos" component={Favorites} />
+      <Stack.Screen name="Favorites" component={Favorites} />
     </Stack.Navigator>
   );
 }

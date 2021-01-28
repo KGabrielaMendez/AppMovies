@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
-import { StarOutlined, StarFilled, StarTwoTone } from '@ant-design/icons';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Favorites from '../../screens/favorites';
@@ -14,14 +13,6 @@ const AddFavoriteComponent = ( id ) => {
         alert("Se añadió a favoritos");
     }
 
-    const searchFavorite = (id) => {
-        AsyncStorage.getItem(id.imdbID, (errorAsync)=>{
-            errorAsync=== null ? console.log("ya esta guardado "+errorAsync)
-            :console.log("llama a guardar "+errorAsync); 
-            //setAdd(errorAsync);
-        });
-        return add;
-    }
     console.log(add+'-ñ');
 
     return (
